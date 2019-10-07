@@ -12,6 +12,7 @@ class MainViewController: UITableViewController {
     
     let carManufacturer = ["Lamborgini", "Tesla", "Mazda"]
     let carModel = ["Aventador", "Model X", "3"]
+    let year = ["2013", "2017", "2019"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +26,20 @@ class MainViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "\(carManufacturer[indexPath.row]) \(carModel[indexPath.row])"
-        cell.imageView?.image = UIImage(named: carManufacturer[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+        cell.manufacturerLabel.text = carManufacturer[indexPath.row]
+        cell.modelLabel.text = carModel[indexPath.row]
+        cell.yearLabel.text = year[indexPath.row]
+        cell.imageViewCustom.image = UIImage(named: carManufacturer[indexPath.row])
         return cell
     }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
+    }
+    
 
     /*
     // MARK: - Navigation

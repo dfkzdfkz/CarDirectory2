@@ -14,6 +14,7 @@
 		A75B72EC234770320094206D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A75B72EB234770320094206D /* Assets.xcassets */; };
 		A75B72EF234770320094206D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A75B72ED234770320094206D /* LaunchScreen.storyboard */; };
 		A75B72F92347768C0094206D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75B72F82347768C0094206D /* MainViewController.swift */; };
+		A789B466234A349D0037531B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789B465234A349D0037531B /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A75B72EE234770320094206D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A75B72F0234770320094206D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A75B72F82347768C0094206D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A789B465234A349D0037531B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		A75B72DE234770300094206D /* CarDirectory2 */ = {
 			isa = PBXGroup;
 			children = (
+				A789B465234A349D0037531B /* CustomTableViewCell.swift */,
 				A75B72DF234770300094206D /* AppDelegate.swift */,
 				A75B72F82347768C0094206D /* MainViewController.swift */,
 				A75B72E1234770300094206D /* SceneDelegate.swift */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A75B72E0234770300094206D /* AppDelegate.swift in Sources */,
+				A789B466234A349D0037531B /* CustomTableViewCell.swift in Sources */,
 				A75B72E2234770300094206D /* SceneDelegate.swift in Sources */,
 				A75B72EA234770300094206D /* CarDirectory2.xcdatamodeld in Sources */,
 				A75B72F92347768C0094206D /* MainViewController.swift in Sources */,
