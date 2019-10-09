@@ -22,5 +22,6 @@ extension Car {
     @NSManaged public var model: String?
     @NSManaged public var bodyType: String?
     @NSManaged public var image: Data?
+    
 
 }
