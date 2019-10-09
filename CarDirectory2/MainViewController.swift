@@ -35,13 +35,9 @@ class MainViewController: UITableViewController {
         return cell
     }
     
-    // MARK: - Table view delegate
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
+    @IBAction func cancelAction(segue: UIStoryboardSegue) {
+        
     }
-    
-
     /*
     // MARK: - Navigation
 
