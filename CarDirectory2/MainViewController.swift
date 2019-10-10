@@ -15,6 +15,17 @@ class MainViewController: UITableViewController {
     
     var cars = [Car]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        
+        do {
+            cars = try context.fetch(fetchRequest)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addTestCars()
@@ -35,8 +46,12 @@ class MainViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func cancelAction(segue: UIStoryboardSegue) {
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         
+        guard let newCarVC = segue.source as? NewCarViewController else { return }
+        newCarVC.saveNewCar()
+        saveCar(bodyType: newCarVC.newCar.bodyType!, image: newCarVC.newCar.image!, manufacturer: newCarVC.newCar.manufacturer!, model: newCarVC.newCar.model!, year: newCarVC.newCar.year)
+        tableView.reloadData()
     }
     /*
     // MARK: - Navigation
@@ -50,7 +65,7 @@ class MainViewController: UITableViewController {
     
     // MARK: - Core Data
     
-    func saveCar(bodyType: String, image: Data, manufacturer: String, model: String, year: Int16) {
+    public func saveCar(bodyType: String, image: Data, manufacturer: String, model: String, year: Int16) {
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Car", in: context)

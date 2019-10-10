@@ -78,21 +78,21 @@
                     <navigationItem key="navigationItem" title="Car Directory" id="gX7-hy-7br">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hlv-qf-ClN">
                             <connections>
-                                <segue destination="gHN-B3-tim" kind="presentation" id="TYT-yc-j50"/>
+                                <segue destination="FNU-5C-9aT" kind="presentation" id="lRX-Xz-q8f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="laJ-1r-4RA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="556.52173913043487" y="131.91964285714286"/>
+            <point key="canvasLocation" x="443" y="132"/>
         </scene>
         <!--New car-->
         <scene sceneID="6Xs-ur-5gF">
             <objects>
-                <tableViewController id="CS4-Yt-aae" customClass="NewCarViewController" customModule="CarDirectory2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="CS4-Yt-aae" customClass="NewCarViewController" customModule="CarDirectory2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VJW-yA-q1p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
@@ -110,7 +110,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="249.00000000000006"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="tNp-Wp-Iob" firstAttribute="leading" secondItem="gEa-tn-qnQ" secondAttribute="leadingMargin" constant="-20" id="KGH-BM-9C5"/>
                                                 <constraint firstItem="tNp-Wp-Iob" firstAttribute="centerY" secondItem="gEa-tn-qnQ" secondAttribute="centerY" id="c11-lf-3uK"/>
@@ -255,7 +255,7 @@
                                                                 <constraint firstAttribute="height" constant="29" id="5gr-0J-5xm"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             <connections>
                                                                 <outlet property="delegate" destination="CS4-Yt-aae" id="g9N-C1-JT4"/>
                                                             </connections>
@@ -282,19 +282,28 @@
                     <navigationItem key="navigationItem" title="New car" id="PDS-6l-VQJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bbu-sS-T2x">
                             <connections>
-                                <segue destination="75X-qJ-gWo" kind="unwind" unwindAction="cancelActionWithSegue:" id="feE-1k-EzG"/>
+                                <action selector="cancelAction:" destination="CS4-Yt-aae" id="cme-uT-axq"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VVq-Z0-bQC"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VVq-Z0-bQC">
+                            <connections>
+                                <segue destination="75X-qJ-gWo" kind="unwind" unwindAction="unwindSegueWithSegue:" id="hC3-RI-B2S"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageOfCar" destination="tNp-Wp-Iob" id="5oh-nd-tYU"/>
+                        <outlet property="carBodyType" destination="JiV-ae-lTy" id="9Zi-in-DnE"/>
+                        <outlet property="carImage" destination="tNp-Wp-Iob" id="5oh-nd-tYU"/>
+                        <outlet property="carManufacturer" destination="6B2-us-OZe" id="SdA-pv-7i1"/>
+                        <outlet property="carModel" destination="130-x3-yxd" id="UBP-RE-nXW"/>
+                        <outlet property="carYear" destination="AUN-5i-Onm" id="BuM-cS-1Ve"/>
+                        <outlet property="saveButton" destination="VVq-Z0-bQC" id="6z6-gg-JtU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKb-9H-hOf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="75X-qJ-gWo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1876.8115942028987" y="131.91964285714286"/>
+            <point key="canvasLocation" x="1929" y="132"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R0s-dY-bhy">
@@ -316,22 +325,22 @@
             <point key="canvasLocation" x="-361" y="132"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="14x-9h-8tr">
+        <scene sceneID="p2e-tA-wzJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gHN-B3-tim" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="FNU-5C-9aT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L1W-go-S8N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iTI-eb-68j">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="CS4-Yt-aae" kind="relationship" relationship="rootViewController" id="Y5W-WL-FPG"/>
+                        <segue destination="CS4-Yt-aae" kind="relationship" relationship="rootViewController" id="tqq-6f-ARS"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6dl-0O-EiJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xUQ-tv-GCW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198.5507246376812" y="131.91964285714286"/>
+            <point key="canvasLocation" x="1215.9420289855072" y="131.91964285714286"/>
         </scene>
     </scenes>
     <resources>
