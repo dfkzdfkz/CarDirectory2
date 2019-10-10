@@ -14,6 +14,7 @@
 		A75B72EC234770320094206D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A75B72EB234770320094206D /* Assets.xcassets */; };
 		A75B72EF234770320094206D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A75B72ED234770320094206D /* LaunchScreen.storyboard */; };
 		A75B72F92347768C0094206D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75B72F82347768C0094206D /* MainViewController.swift */; };
+		A7840841234F3E5E00676AC9 /* NewCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7840840234F3E5E00676AC9 /* NewCarViewController.swift */; };
 		A789B466234A349D0037531B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A789B465234A349D0037531B /* CustomTableViewCell.swift */; };
 		A79E85F2234E1DA8009CDACA /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E85F0234E1DA8009CDACA /* Car+CoreDataClass.swift */; };
 		A79E85F3234E1DA8009CDACA /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E85F1234E1DA8009CDACA /* Car+CoreDataProperties.swift */; };
@@ -29,6 +30,7 @@
 		A75B72EE234770320094206D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A75B72F0234770320094206D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A75B72F82347768C0094206D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A7840840234F3E5E00676AC9 /* NewCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCarViewController.swift; sourceTree = "<group>"; };
 		A789B465234A349D0037531B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		A79E85F0234E1DA8009CDACA /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Car+CoreDataClass.swift"; path = "CarDirectory2/Car+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A79E85F1234E1DA8009CDACA /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Car+CoreDataProperties.swift"; path = "CarDirectory2/Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				A789B465234A349D0037531B /* CustomTableViewCell.swift */,
 				A75B72DF234770300094206D /* AppDelegate.swift */,
 				A75B72F82347768C0094206D /* MainViewController.swift */,
+				A7840840234F3E5E00676AC9 /* NewCarViewController.swift */,
 				A75B72E1234770300094206D /* SceneDelegate.swift */,
 				A75B72E5234770300094206D /* Main.storyboard */,
 				A75B72EB234770320094206D /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 				A789B466234A349D0037531B /* CustomTableViewCell.swift in Sources */,
 				A79E85F3234E1DA8009CDACA /* Car+CoreDataProperties.swift in Sources */,
 				A79E85F2234E1DA8009CDACA /* Car+CoreDataClass.swift in Sources */,
+				A7840841234F3E5E00676AC9 /* NewCarViewController.swift in Sources */,
 				A75B72E2234770300094206D /* SceneDelegate.swift in Sources */,
 				A75B72EA234770300094206D /* CarDirectory2.xcdatamodeld in Sources */,
 				A75B72F92347768C0094206D /* MainViewController.swift in Sources */,
@@ -310,7 +314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ayavalya.CarDirectory2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -328,7 +332,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ayavalya.CarDirectory2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
