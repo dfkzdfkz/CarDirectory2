@@ -10,9 +10,7 @@ import UIKit
 import CoreData
 
 class MainViewController: UITableViewController {
-    
-    var testadded = false
-    
+  
     var cars = [Car]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +86,20 @@ class MainViewController: UITableViewController {
     // MARK: - Test cars
     
     func addTestCars() {
-        if testadded == false {
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        
+        var records = 0
+        
+        do {
+            let count = try context.count(for: fetchRequest)
+            records = count
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        if records == 0 {
             let testImage1 = UIImage(named: "Lamborgini")
             let testImage2 = UIImage(named: "Tesla")
             let testImage3 = UIImage(named: "Mazda")
@@ -97,8 +108,6 @@ class MainViewController: UITableViewController {
             saveCar(bodyType: "купе", image: testImageData1, manufacturer: "Lamborgini", model: "Aventador", year: 2013)
             saveCar(bodyType: "внедорожник", image: testImageData2, manufacturer: "Tesla", model: "Model X", year: 2017)
             saveCar(bodyType: "седан", image: testImageData3, manufacturer: "Mazda", model: "3", year: 2019)
-            
-            testadded = true
         } else {
             return
         }
