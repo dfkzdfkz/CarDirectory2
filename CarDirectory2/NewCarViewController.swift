@@ -11,7 +11,7 @@ import CoreData
 
 class NewCarViewController: UITableViewController {
     
-    var newCar = Car()
+    var newCar: Car?
     
     @IBOutlet weak var carImage: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -32,8 +32,7 @@ class NewCarViewController: UITableViewController {
         
         saveButton.isEnabled = false
         
-        
-        
+   
     }
     
     func saveNewCar() {
@@ -52,6 +51,13 @@ class NewCarViewController: UITableViewController {
         newCar.image = newCarImageData
         
         self.newCar = newCar
+        
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {

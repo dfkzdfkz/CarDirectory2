@@ -28,7 +28,31 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         addTestCars()
     }
-
+//    MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard editingStyle == .delete else { return }
+        
+        let carToDelete = cars[indexPath.row]
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        context.delete(carToDelete)
+        
+        do {
+            try context.save()
+            cars.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,7 +72,15 @@ class MainViewController: UITableViewController {
         
         guard let newCarVC = segue.source as? NewCarViewController else { return }
         newCarVC.saveNewCar()
-        saveCar(bodyType: newCarVC.newCar.bodyType!, image: newCarVC.newCar.image!, manufacturer: newCarVC.newCar.manufacturer!, model: newCarVC.newCar.model!, year: newCarVC.newCar.year)
+//        saveCar(bodyType: newCarVC.newCar!.bodyType!, image: newCarVC.newCar!.image!, manufacturer: newCarVC.newCar!.manufacturer!, model: newCarVC.newCar!.model!, year: newCarVC.newCar!.year)
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+               let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+               
+               do {
+                   cars = try context.fetch(fetchRequest)
+               } catch {
+                   print(error.localizedDescription)
+               }
         tableView.reloadData()
     }
     /*
