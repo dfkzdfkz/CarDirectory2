@@ -12,6 +12,10 @@ import CoreData
 class NewCarViewController: UITableViewController {
     
     var newCar: Car?
+    var index = 0
+    var isNewCar = true
+    var currentCar: Car?
+    
     
     @IBOutlet weak var carImage: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -31,32 +35,95 @@ class NewCarViewController: UITableViewController {
         carModel.addTarget(self, action: #selector(textFieldChanched), for: .editingChanged)
         
         saveButton.isEnabled = false
+        setupEditScreen()
         
    
     }
     
-    func saveNewCar() {
-        
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Car", in: context)
-        let newCar = NSManagedObject(entity: entity!, insertInto: context) as! Car
-        
-        guard let newCarImageData = carImage.image?.pngData() else { return }
-        guard let intYear = Int16(carYear.text!) else { return }
-        
-        newCar.manufacturer = carManufacturer.text
-        newCar.model = carModel.text
-        newCar.bodyType = carBodyType.text
-        newCar.year = intYear
-        newCar.image = newCarImageData
-        
-        self.newCar = newCar
-        
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
+    private func setupEditScreen() {
+        if isNewCar == false {
+            
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+                   
+            do {
+                let results = try context.fetch(fetchRequest)
+                currentCar = results[index]
+                } catch {
+                    print(error.localizedDescription)
+                }
+            
+            guard let data = currentCar?.image, let image = UIImage(data: data) else { return }
+            
+            carImage.image = image
+            carImage.contentMode = .scaleAspectFill
+            carManufacturer.text = currentCar?.manufacturer
+            carModel.text = currentCar?.model
+            carBodyType.text = currentCar?.bodyType
+            carYear.text = "\(currentCar!.year)"
+            
+            setupNavigationBar()
+            
         }
+    }
+    
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentCar?.manufacturer
+        saveButton.isEnabled = true
+    }
+    
+    func saveCar() {
+        
+        if isNewCar == true {
+            
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Car", in: context)
+            let newCar = NSManagedObject(entity: entity!, insertInto: context) as! Car
+                   
+            guard let newCarImageData = carImage.image?.pngData() else { return }
+            guard let intYear = Int16(carYear.text!) else { return }
+                   
+            newCar.manufacturer = carManufacturer.text
+            newCar.model = carModel.text
+            newCar.bodyType = carBodyType.text
+            newCar.year = intYear
+            newCar.image = newCarImageData
+                   
+            self.newCar = newCar
+                   
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+            guard let newManufacturer = carManufacturer.text,
+                let newModel = carModel.text,
+                let newBodyType = carBodyType.text,
+                let newYear = Int16(carYear.text!),
+                let newImage = carImage.image?.pngData()
+                else { return }
+            
+            currentCar?.manufacturer = newManufacturer
+            currentCar?.model = newModel
+            currentCar?.bodyType = newBodyType
+            currentCar?.year = newYear
+            currentCar?.image = newImage
+            
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+       
         
     }
     

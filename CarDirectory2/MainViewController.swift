@@ -45,8 +45,11 @@ class MainViewController: UITableViewController {
         
         do {
             try context.save()
+//            tableView.beginUpdates()
             cars.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//            tableView.endUpdates()
+            tableView.reloadData()
         } catch {
             print(error.localizedDescription)
         }
@@ -71,31 +74,33 @@ class MainViewController: UITableViewController {
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         
         guard let newCarVC = segue.source as? NewCarViewController else { return }
-        newCarVC.saveNewCar()
-//        saveCar(bodyType: newCarVC.newCar!.bodyType!, image: newCarVC.newCar!.image!, manufacturer: newCarVC.newCar!.manufacturer!, model: newCarVC.newCar!.model!, year: newCarVC.newCar!.year)
+        newCarVC.saveCar()
+    
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-               let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
                
                do {
                    cars = try context.fetch(fetchRequest)
                } catch {
                    print(error.localizedDescription)
                }
+        
         tableView.reloadData()
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetail" {
+            guard let vc = segue.destination as? NewCarViewController else { return }
+            guard let indexPath = tableView.indexPathsForSelectedRows?.first else { return }
+            vc.index = indexPath.row
+            vc.isNewCar = false
+        }
     }
-    */
+
     
     // MARK: - Core Data
     
-    public func saveCar(bodyType: String, image: Data, manufacturer: String, model: String, year: Int16) {
+    public func saveCarToCoreData(bodyType: String, image: Data, manufacturer: String, model: String, year: Int16) {
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Car", in: context)
@@ -137,9 +142,9 @@ class MainViewController: UITableViewController {
             let testImage3 = UIImage(named: "Mazda")
             guard let testImageData1 = testImage1?.pngData(), let testImageData2 = testImage2?.pngData(), let testImageData3 = testImage3?.pngData() else { return }
 
-            saveCar(bodyType: "купе", image: testImageData1, manufacturer: "Lamborgini", model: "Aventador", year: 2013)
-            saveCar(bodyType: "внедорожник", image: testImageData2, manufacturer: "Tesla", model: "Model X", year: 2017)
-            saveCar(bodyType: "седан", image: testImageData3, manufacturer: "Mazda", model: "3", year: 2019)
+            saveCarToCoreData(bodyType: "купе", image: testImageData1, manufacturer: "Lamborgini", model: "Aventador", year: 2013)
+            saveCarToCoreData(bodyType: "внедорожник", image: testImageData2, manufacturer: "Tesla", model: "Model X", year: 2017)
+            saveCarToCoreData(bodyType: "седан", image: testImageData3, manufacturer: "Mazda", model: "3", year: 2019)
         } else {
             return
         }
