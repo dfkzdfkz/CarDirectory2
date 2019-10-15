@@ -11,7 +11,6 @@ import CoreData
 
 class NewCarViewController: UITableViewController {
     
-//    var newCar: Car?
     var currentCar: Car?
     var index = 0
     var isNewCar = true
@@ -42,7 +41,6 @@ class NewCarViewController: UITableViewController {
     private func setupEditScreen() {
         if isNewCar == false {
             
-//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
                    
             do {
@@ -78,7 +76,6 @@ class NewCarViewController: UITableViewController {
         
         if isNewCar == true {
             
-//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let entity = NSEntityDescription.entity(forEntityName: "Car", in: context)
             let newCar = NSManagedObject(entity: entity!, insertInto: context) as! Car
             
@@ -93,16 +90,12 @@ class NewCarViewController: UITableViewController {
             newCar.year = intYear
             newCar.image = newCarImageData
                    
-//            self.newCar = newCar
-                   
             do {
                 try context.save()
             } catch {
                 print(error.localizedDescription)
             }
         } else {
-//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
             guard let newManufacturer = carManufacturer.text,
                 let newModel = carModel.text,
                 let newBodyType = carBodyType.text,
