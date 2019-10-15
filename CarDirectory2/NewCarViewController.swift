@@ -11,11 +11,12 @@ import CoreData
 
 class NewCarViewController: UITableViewController {
     
-    var newCar: Car?
+//    var newCar: Car?
+    var currentCar: Car?
     var index = 0
     var isNewCar = true
-    var currentCar: Car?
-    
+    var imageIsChange = false
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var carImage: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -26,7 +27,6 @@ class NewCarViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.tableFooterView = UIView()
         
         carManufacturer.addTarget(self, action: #selector(textFieldChanched), for: .editingChanged)
@@ -37,13 +37,12 @@ class NewCarViewController: UITableViewController {
         saveButton.isEnabled = false
         setupEditScreen()
         
-   
     }
     
     private func setupEditScreen() {
         if isNewCar == false {
             
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
                    
             do {
@@ -63,7 +62,6 @@ class NewCarViewController: UITableViewController {
             carYear.text = "\(currentCar!.year)"
             
             setupNavigationBar()
-            
         }
     }
     
@@ -80,11 +78,13 @@ class NewCarViewController: UITableViewController {
         
         if isNewCar == true {
             
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let entity = NSEntityDescription.entity(forEntityName: "Car", in: context)
             let newCar = NSManagedObject(entity: entity!, insertInto: context) as! Car
+            
+            let image = imageIsChange ? carImage.image : #imageLiteral(resourceName: "Default")
                    
-            guard let newCarImageData = carImage.image?.pngData() else { return }
+            guard let newCarImageData = image?.pngData() else { return }
             guard let intYear = Int16(carYear.text!) else { return }
                    
             newCar.manufacturer = carManufacturer.text
@@ -93,7 +93,7 @@ class NewCarViewController: UITableViewController {
             newCar.year = intYear
             newCar.image = newCarImageData
                    
-            self.newCar = newCar
+//            self.newCar = newCar
                    
             do {
                 try context.save()
@@ -101,7 +101,7 @@ class NewCarViewController: UITableViewController {
                 print(error.localizedDescription)
             }
         } else {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             
             guard let newManufacturer = carManufacturer.text,
                 let newModel = carModel.text,
@@ -122,9 +122,6 @@ class NewCarViewController: UITableViewController {
                 print(error.localizedDescription)
             }
         }
-        
-       
-        
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
@@ -184,6 +181,7 @@ extension NewCarViewController: UITextFieldDelegate {
             saveButton.isEnabled = false
         }
     }
+    
 }
 
 // MARK: - Work with image
@@ -206,6 +204,7 @@ extension NewCarViewController: UIImagePickerControllerDelegate, UINavigationCon
         carImage.image = info[.editedImage] as? UIImage
         carImage.contentMode = .scaleAspectFill
         carImage.clipsToBounds = true
+        imageIsChange = true
         dismiss(animated: true)
     }
     

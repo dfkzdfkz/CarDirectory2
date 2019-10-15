@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A75B72DC234770300094206D /* CarDirectory2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarDirectory2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A75B72DC234770300094206D /* AutoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75B72DF234770300094206D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A75B72E1234770300094206D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A75B72E6234770300094206D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -32,8 +32,8 @@
 		A75B72F82347768C0094206D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A7840840234F3E5E00676AC9 /* NewCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCarViewController.swift; sourceTree = "<group>"; };
 		A789B465234A349D0037531B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		A79E85F0234E1DA8009CDACA /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Car+CoreDataClass.swift"; path = "CarDirectory2/Car+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A79E85F1234E1DA8009CDACA /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Car+CoreDataProperties.swift"; path = "CarDirectory2/Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A79E85F0234E1DA8009CDACA /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A79E85F1234E1DA8009CDACA /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +50,7 @@
 		A75B72D3234770300094206D = {
 			isa = PBXGroup;
 			children = (
-				A79E85F0234E1DA8009CDACA /* Car+CoreDataClass.swift */,
-				A79E85F1234E1DA8009CDACA /* Car+CoreDataProperties.swift */,
+				A77C1AEA23551D650054A11B /* CoreData Model */,
 				A75B72DE234770300094206D /* CarDirectory2 */,
 				A75B72DD234770300094206D /* Products */,
 			);
@@ -60,7 +59,7 @@
 		A75B72DD234770300094206D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A75B72DC234770300094206D /* CarDirectory2.app */,
+				A75B72DC234770300094206D /* AutoList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,18 +67,27 @@
 		A75B72DE234770300094206D /* CarDirectory2 */ = {
 			isa = PBXGroup;
 			children = (
-				A789B465234A349D0037531B /* CustomTableViewCell.swift */,
-				A75B72DF234770300094206D /* AppDelegate.swift */,
 				A75B72F82347768C0094206D /* MainViewController.swift */,
 				A7840840234F3E5E00676AC9 /* NewCarViewController.swift */,
-				A75B72E1234770300094206D /* SceneDelegate.swift */,
-				A75B72E5234770300094206D /* Main.storyboard */,
-				A75B72EB234770320094206D /* Assets.xcassets */,
-				A75B72ED234770320094206D /* LaunchScreen.storyboard */,
+				A789B465234A349D0037531B /* CustomTableViewCell.swift */,
 				A75B72F0234770320094206D /* Info.plist */,
+				A75B72ED234770320094206D /* LaunchScreen.storyboard */,
+				A75B72DF234770300094206D /* AppDelegate.swift */,
+				A75B72EB234770320094206D /* Assets.xcassets */,
+				A75B72E5234770300094206D /* Main.storyboard */,
+				A75B72E1234770300094206D /* SceneDelegate.swift */,
 				A75B72E8234770300094206D /* CarDirectory2.xcdatamodeld */,
 			);
 			path = CarDirectory2;
+			sourceTree = "<group>";
+		};
+		A77C1AEA23551D650054A11B /* CoreData Model */ = {
+			isa = PBXGroup;
+			children = (
+				A79E85F1234E1DA8009CDACA /* Car+CoreDataProperties.swift */,
+				A79E85F0234E1DA8009CDACA /* Car+CoreDataClass.swift */,
+			);
+			path = "CoreData Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,7 +107,7 @@
 			);
 			name = CarDirectory2;
 			productName = CarDirectory2;
-			productReference = A75B72DC234770300094206D /* CarDirectory2.app */;
+			productReference = A75B72DC234770300094206D /* AutoList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -312,7 +320,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ayavalya.CarDirectory2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AutoList;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -330,7 +338,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ayavalya.CarDirectory2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AutoList;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

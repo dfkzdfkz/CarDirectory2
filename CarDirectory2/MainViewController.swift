@@ -12,9 +12,10 @@ import CoreData
 class MainViewController: UITableViewController {
   
     var cars = [Car]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewWillAppear(_ animated: Bool) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
         
         do {
@@ -39,7 +40,7 @@ class MainViewController: UITableViewController {
         guard editingStyle == .delete else { return }
         
         let carToDelete = cars[indexPath.row]
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         context.delete(carToDelete)
         
@@ -59,7 +60,11 @@ class MainViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cars.count
+        if cars.count == 0 {
+            return 0
+        } else {
+            return cars.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,7 +81,7 @@ class MainViewController: UITableViewController {
         guard let newCarVC = segue.source as? NewCarViewController else { return }
         newCarVC.saveCar()
     
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
                
                do {
@@ -102,7 +107,7 @@ class MainViewController: UITableViewController {
     
     public func saveCarToCoreData(bodyType: String, image: Data, manufacturer: String, model: String, year: Int16) {
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Car", in: context)
         let carObject = NSManagedObject(entity: entity!, insertInto: context) as! Car
         
@@ -124,7 +129,7 @@ class MainViewController: UITableViewController {
     
     func addTestCars() {
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
         
         var records = 0

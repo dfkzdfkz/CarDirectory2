@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Car Directory-->
+        <!--Auto List-->
         <scene sceneID="hNb-L3-X0n">
             <objects>
                 <tableViewController id="ojA-py-JCG" customClass="MainViewController" customModule="CarDirectory2" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,7 +78,7 @@
                             <outlet property="delegate" destination="ojA-py-JCG" id="PTc-zJ-3ss"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Car Directory" id="gX7-hy-7br">
+                    <navigationItem key="navigationItem" title="Auto List" id="gX7-hy-7br">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hlv-qf-ClN">
                             <connections>
                                 <segue destination="FNU-5C-9aT" kind="presentation" id="lRX-Xz-q8f"/>
@@ -113,7 +113,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="249"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="tNp-Wp-Iob" secondAttribute="trailing" id="bvi-nC-zJn"/>
                                                 <constraint firstAttribute="bottom" secondItem="tNp-Wp-Iob" secondAttribute="bottom" id="dji-E4-yat"/>
